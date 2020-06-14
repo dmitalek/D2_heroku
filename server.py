@@ -1,11 +1,16 @@
 import os
 import random
+import sentry_sdk
+import env
+from bottle import route, run, Bottle
+from sentry_sdk.integrations.bottle import BottleIntegration
 
-from bottle import route, run
+sentry_sdk.init(dsn=env.SENTRY_DSN, integrations=[BottleIntegration()])
 
+app = Bottle()
 
 def generate_message():
-    return "Приветственная страница для Heroku"
+    return "It's just test, nothin alse"
 
 
 @route("/")
@@ -44,3 +49,4 @@ if os.environ.get("APP_LOCATION") == "heroku":
     )
 else:
     run(host="localhost", port=8080, debug=True)
+
