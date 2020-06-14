@@ -5,7 +5,7 @@ import env
 from bottle import route, run, Bottle
 from sentry_sdk.integrations.bottle import BottleIntegration
 
-sentry_sdk.init(dsn=env.SENTRY_DSN, integrations=[BottleIntegration()])
+sentry_sdk.init(dsn=os.environ.get("SENTRY_DSN"), integrations=[BottleIntegration()]) 
 
 app = Bottle()
 
