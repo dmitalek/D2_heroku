@@ -5,7 +5,7 @@ import sentry_sdk
 from bottle import route, run, Bottle
 from sentry_sdk.integrations.bottle import BottleIntegration
 
-sentry_sdk.init("https://9e202d1064644ba9a05c0bc1ef731fbb@o402839.ingest.sentry.io/5274890", integrations=[BottleIntegration()])
+ssentry_sdk.init(dsn=os.environ.get("SENTRY_DSN"), integrations=[BottleIntegration()])
 
 def generate_message():
     return "It's just test, nothin alse"
